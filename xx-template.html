@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- This file shows the basic building blocks for a MIDI CC browser based MIDI controller -->
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>MY COOL DEVICE TEMPLATE</title><!-- Change the title to the name of your controlled device -->
+    <link rel="stylesheet" href="res/controller.css" type="text/css" />
+    <script src="res/jquery.js"></script>
+    <!-- 
+        IMPORTANT: Change the value of the data-settings-prefix attribute in the following
+        <script>-tag to a short, unique text describing the controlled device!
+        This prefix is used to store all presets and MIDI settings for this device in
+        your browser. If two controller HTML pages use the same prefix, all settings and
+        patches a shared and overwritten. 
+    -->
+    <script src="res/controller.js" data-settings-prefix="mydevice_"></script>
+    <style>
+        /* Here you can change the user interface's main color */
+        section {
+            border-bottom-color: #009900;
+        }
+        section h2 {
+            background-color: #009900;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>MY COOL DEVICE TEMPLATE</h1><!-- Change this headline to the name of your controlled device -->
+    </header>
+
+    <main>
+        <!-- Within this <main> block you build your controller interface with sections, faders, buttons and groups -->
+
+        <!-- A section represents one block of controls, e.g. oscillators, filters or modulation sources -->
+        <section>
+            <h2>FIRST SECTION</h2>
+            <!-- 
+                Create faders. 
+                The following attributes are essential:
+                data-cc:    The MIDI CC number this fader controls
+                data-init:  The initial value of the fader
+                data-label: The label displayed above the fader
+
+                Hint: Your labels for faders and buttons should be fairly short (abbreviated) because
+                there's not much space above a fader or in a button...
+            -->
+            <div class="fader" data-cc="70" data-label="FADER1" data-init="51"></div>
+            <div class="fader" data-cc="77" data-label="FADER2" data-init="41"></div>
+
+            <!-- A block of button controls -->
+            <div class="controls">
+                <!-- 
+                    Create a simple on/off button. 
+                    data-cc is the MIDI CC number under which this button sends the value 0 (off) or 1 (on).
+                    With the "checked" attribute the button is initially checked. Remove this, if you want
+                    the button to be unchecked when the page loads.
+                    The <label>-tag is the displayed label of the button. The "id"" of the <input>-tag and the
+                    "for" of the <label>-tag must be the same and unique for the whole page.  
+                -->
+                <input type="checkbox" id="btn1" data-cc="17" checked/>
+                <label for="btn1">BUTTON</label>
+
+                <!--
+                    Create a toggle button, displaying two labels which can be toggled with mouse clicks.
+                    The important difference to the simple button is, the class="toggle" in the <label>
+                    and the two <span class="off"> and <span class="on"> within the label.
+                    This button also sends CC value 0 if it is off and 1 when on. 
+                -->
+                <input type="checkbox" id="toggle1" data-cc="16" />
+                <label for="toggle1" class="toggle"><span class="off">LEFT</span><span class="on">RIGHT</span></label>
+
+                <!-- With a <p>aragraph you can provide a simple headline within a button control group -->
+                <p>LIST</p>
+
+                <!-- 
+                    Create a option list, where you can choose one of a list of options. All <input type="radio">
+                    should have the same "data-cc"" value and the same page-unique "name" attribute. Beware:
+                    "name" needs to be the same for a group of options. The "id" and "for" need to be unique for
+                    one set of <input> and <label>.
+                    In the example below, choosing the OPTION1 sends the value 0 on MIDI CC 14, OPTION2 sends
+                    the value 1 and OPTION3 the value 2.
+                -->
+                <input type="radio" id="optid1" data-cc="14" value="0" name="opt1"/>
+                <label for="optid1">OPTION1</label>
+
+                <input type="radio" id="optid2" data-cc="14" value="1" name="opt1" checked /> <!-- checked, when it should be the initially checked option -->
+                <label for="optid2">OPTION2</label>
+
+                <input type="radio" id="optid3" data-cc="14" value="2" name="opt1" />
+                <label for="optid3">OPTION3</label>
+                
+            </div>
+        </section>
+
+        <!-- here anothe section starts, which demonstrates groups within a section -->
+        <section>
+            <h2>SECTION WITH GROUPS</h2>
+            <div class="group">
+                <h2>GROUP1</h2><!-- The group's headline -->
+                <div class="fader" data-cc="70" data-label="FADER1" data-init="64"></div>
+                <div class="fader" data-cc="77" data-label="FADER2" data-init="64"></div>
+            </div>
+            <div class="group">
+                <h2>GROUP2</h2>
+                <div class="controls">
+                    <p>VERTICAL</p>
+                    <!-- Create a toggle button with vertical option display -->
+                    <input type="checkbox" id="chb" data-cc="15" />
+                    <label for="chb" class="toggle vert"><span class="off">UPPER</span><span class="on">LOWER</span></label>
+                </div>
+                <!-- this fader has a gapleft style class to provide some extra spacing to the left -->
+                <div class="fader gapleft" data-cc="70" data-label="FADERX" data-init="64"></div>
+            </div>
+        </section>
+
+        <!-- And here, because it's always useful, a classic adsr section -->
+        <section>
+            <h2>ENVELOPE</h2>
+            <div class="fader" data-cc="73" data-label="A" data-init="74"></div>
+            <div class="fader" data-cc="75" data-label="D" data-init="127"></div>
+            <div class="fader" data-cc="76" data-label="S" data-init="127"></div>
+            <div class="fader" data-cc="72" data-label="R" data-init="99"></div>
+            <div class="fader gapleft" data-cc="7" data-label="VOLUME" data-init="65"></div>
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>FORMANTOR</title>
+    <link rel="stylesheet" href="res/controller.css" type="text/css" />
+    <script src="res/jquery.js"></script>
+    <script src="res/controller.js" 
+        data-settings-prefix="fmt_"
+        data-default-patchlist='["PaTcHlIsT","fmt_","2016-11-26T17:34:40.146Z",{"7":"99","14":"3","15":0,"16":0,"17":"0","70":"0","71":"76","72":"32","73":"0","74":"86","75":"0","76":"127","77":"34","89":"0","93":"7","94":"0","106":"0","107":"0","108":"10","109":"3","110":"0","113":"60","_name_":"LeadVox"},{"7":"94","14":"3","15":0,"16":0,"17":"0","70":"51","71":"100","72":"53","73":"0","74":"127","75":"55","76":"9","77":"6","89":"0","93":"0","94":"0","106":"0","107":"19","108":"23","109":"0","110":"38","113":"48","_name_":"Pluckvox"},{"7":"65","14":"3","15":1,"16":"32","17":"110","18":0,"70":"0","71":"67","72":"99","73":"74","74":"0","75":"127","76":"127","77":"0","89":"74","93":"15","94":"30","106":"118","107":"0","108":"0","109":"0","110":"0","113":"9","_name_":"Movement"},{"7":"99","14":"2","15":0,"16":"13","17":"19","18":1,"70":"0","71":"76","72":"0","73":"0","74":"64","75":"0","76":"127","77":"34","89":"0","93":"3","94":"0","106":"0","107":"17","108":"0","109":"7","110":"31","113":"32","_name_":"Uh-Oh-Organ"},{"7":"127","14":"0","15":0,"16":2,"17":"0","70":"40","71":"77","72":"65","73":"0","74":"0","75":"99","76":"44","77":"41","89":"109","93":"3","94":"13","106":"0","107":"34","108":"0","109":"0","110":"38","113":"48","_name_":"A-Piano"},{"7":"127","14":"0","15":0,"16":2,"17":"0","70":"90","71":"77","72":"65","73":"0","74":"0","75":"99","76":"44","77":"41","89":"109","93":"3","94":"13","106":"0","107":"34","108":"0","109":"0","110":"38","113":"48","_name_":"Ä-Piano"},{"7":"65","14":"3","15":1,"16":"38","17":"0","18":1,"70":"51","71":"67","72":"99","73":"74","74":"0","75":"127","76":"127","77":"41","89":"74","93":"3","94":"0","106":"75","107":"94","108":"12","109":"0","110":"27","113":"48","_name_":"Noisy Choir"},{"7":"127","14":"3","15":0,"16":0,"17":"0","70":"102","71":"83","72":"88","73":"0","74":"127","75":"65","76":"24","77":"41","89":"109","93":"3","94":"0","106":"0","107":"7","108":"19","109":"0","110":"16","113":"64","_name_":"Harpsaychord"},{"7":"65","14":"1","15":0,"16":"0","17":"0","18":1,"70":"51","71":"67","72":"6","73":"43","74":"44","75":"71","76":"87","77":"39","89":"74","93":"5","94":"0","106":"75","107":"94","108":"14","109":"0","110":"12","113":"55","_name_":"Singer"}]'
+    ></script>    
+    <style>
+        section {
+            border-bottom-color: #C01A7E;
+        }
+        section h2 {
+            background-color: #C01A7E;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>FORMANTOR</h1>
+    </header>
+
+    <main>
+        
+        <section>
+            <h2>VOICE</h2>
+            <div class="fader" data-cc="70" data-label="VOWEL" data-init="51"></div>
+            <div class="fader" data-cc="16" data-label="GLIDE" data-init="5"></div>
+            <div class="controls">
+                <p>CYCLE</p>
+                <input type="radio" id="cy1" data-cc="14" value="0" name="cy"/>
+                <label for="cy1">FIXED</label>
+                <input type="radio" id="cy2" data-cc="14" value="1" name="cy" />
+                <label for="cy2">UP</label>
+                <input type="radio" id="cy3" data-cc="14" value="2" name="cy" />
+                <label for="cy3">DOWN</label>
+                <input type="radio" id="cy4" data-cc="14" value="3" checked name="cy"/>
+                <label for="cy4">RANDOM</label>
+            </div>
+            <div class="fader" data-cc="93" data-label="HUMAN" data-init="3"></div>
+            <div class="controls">
+                <input type="checkbox" id="cho" data-cc="15" checked/>
+                <label for="cho">CHOIR</label>
+                <input type="checkbox" id="hold" data-cc="18" />
+                <label for="hold">HOLD</label>
+            </div>
+        </section>
+
+        <section>
+            <h2>BREATH</h2>
+            <div class="fader" data-cc="106" data-label="A" data-init="118"></div>
+            <div class="fader" data-cc="107" data-label="D" data-init="0"></div>
+            <div class="fader" data-cc="110" data-label="LEVEL" data-init="0"></div>
+            <div class="fader" data-cc="109" data-label="NOISE" data-init="0"></div>
+        </section>
+
+        <section>
+            <h2>FILTER</h2>
+            <div class="fader" data-cc="74" data-label="LP/BP" data-init="127"></div>
+            <div class="fader" data-cc="71" data-label="RES" data-init="67"></div>
+        </section>
+
+        <section>
+            <h2>LFO</h2>
+            <div class="fader" data-cc="113" data-label="RATE" data-init="48"></div>
+            <div class="fader" data-cc="77" data-label="DELAY" data-init="12"></div>
+            <div class="fader gapleft" data-cc="108" data-label="PITCH" data-init="0"></div>
+            <div class="fader" data-cc="94" data-label="SHIFT" data-init="0"></div>
+            <div class="fader" data-cc="17" data-label="VOWEL" data-init="0"></div>
+        </section>
+
+        <section>
+            <h2>ENV</h2>
+            <div class="fader" data-cc="73" data-label="A" data-init="74"></div>
+            <div class="fader" data-cc="75" data-label="D" data-init="127"></div>
+            <div class="fader" data-cc="76" data-label="S" data-init="127"></div>
+            <div class="fader" data-cc="72" data-label="R" data-init="99"></div>
+            <div class="fader gapleft" data-cc="89" data-label="VEL" data-init="74"></div>
+            <div class="fader" data-cc="7" data-label="LEVEL" data-init="65"></div>
+        </section>
+
+    </main>
+
+</body>
+</html>

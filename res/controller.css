@@ -1,0 +1,394 @@
+body {
+    font-family: sans-serif;
+    color: #eee;
+    background: #000 url("background.png") center center no-repeat fixed;
+    background-size: 100% auto;
+    margin: 0;        
+}
+
+header {
+    background: #444;
+}
+
+button {
+    margin: 0 8px 0 0;
+}
+
+button[data-toggles] {
+    float: right;
+}
+
+.pull-right {
+    float: right;
+}
+
+h1 {
+    color: #fff;
+    text-align: left;
+    font-size: 18px;
+    margin: 0;
+    padding: 0 0 0 16px;
+}
+
+h1 span {
+    font-weight: normal;
+    margin-left: .6em;
+}
+h1 span:before {
+    content: "‹";
+}
+h1 span:after {
+    content: "›";
+}
+
+h2 {
+    margin: 0 0 14px 0;
+    padding: 2px 0;
+    font-size: 14px;
+}
+
+h1:after, h2:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+th {
+    font-weight: normal;
+    text-align: left;
+}
+
+.fader {
+    margin: 0 8px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    text-align: center;
+}
+
+.fader .ctrl {  
+    position: relative;
+    width: 32px;
+    height: 140px;
+}
+
+.fader .handle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 12px;
+    top: 0;
+    border-radius: 4px;
+    background-color: #1981dc;
+    cursor: pointer;
+    box-shadow: 1px 1px 6px #000;
+    border: 1px solid #000;
+}
+
+.fader .scale {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 0;
+    bottom: 0;
+    background-color: #666;
+	border-radius: 4px;
+}
+
+.fader .center {
+    position: absolute;
+    display: block;
+    width: 100%;
+    top: 50%;
+    border-top: 1px dotted #777;
+}
+
+.fader input {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    text-align: center;
+    background-color: transparent;
+    color: #eee;
+}
+.fader label {
+    text-align: center;
+    display: block;
+    width: 100%;
+    color: #eee;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0 0 4px 0;
+}
+.fader label:before {
+    content: "";
+    margin-left: -100%;
+}
+.fader label:after {
+    content: "";
+    margin-right: -100%;
+}
+
+main {
+    margin: 30px 0 20% 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+main p {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.gapleft {
+    margin-left: 32px;
+}
+
+#settings {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #999;
+    font-size: small;
+    padding: 10px;
+    z-index: 1;
+}
+
+#settings.open {
+    display: block;
+}
+
+section {
+    display: inline-block;
+    vertical-align: top;
+    background: #333;
+    color: #eee;
+    border-left: 1px solid #eee;
+    border-bottom: 2px solid #af181d; 
+    padding: 0 0 8px 0;
+    margin: 0 5px 10px 0;
+    box-shadow: 0 0 12px #000;
+}
+
+section h2 {
+    background-color: #af181d;
+    text-align: center;
+}
+
+.group {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 6px;
+}
+
+.group h2 {
+    background-color: transparent!important;
+    font-weight: normal;
+    font-size: 12px;
+    margin: 0 0 3px 0;
+    padding: 0 0 3px 0;
+    border-bottom: 1px solid #999;
+}
+
+.controls {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.controls input[type=checkbox],
+.controls input[type=radio] {
+    visibility: hidden;
+    position: absolute;
+}
+
+.controls input[type=radio] + label {
+    margin: 0 0 -1px 0;
+}
+
+.controls label {
+    display: block;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 10px;
+    margin: 8px 0 0 0;
+    color: #ccc;
+    background-color: #000;
+    border: 1px solid;
+    border-color: #444;
+    cursor: pointer;
+    box-shadow: 1px 1px 6px #000;
+}
+
+.controls input + label.toggle {
+    border-color: #000;
+    background-color: #000;
+    
+    padding: 0;
+    border-radius: 4px;
+}
+
+.controls input:checked + label {
+    background-color: #1981dc;
+    color: #fff;
+    border-color: #000;
+    box-shadow: 0 0 0;
+}
+
+.controls input:checked + label.toggle {
+    background-color: #000;
+    color: #ccc;
+    box-shadow: 1px 1px 6px #000;
+}
+
+.controls label .on, .controls label .off {
+    display: inline-block;
+    background-color: #000;
+    color: #ccc;
+    padding: 4px 6px;
+    border-radius: 4px;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.controls label.vert .on, .controls label.vert .off {
+    width: 100%;
+    padding: 2px 0;
+}
+
+.controls input + label.toggle .off,
+.controls input:checked + label.toggle .on {
+    background-color: #1981dc;
+    color: #fff;
+    border-color: #000;
+    box-shadow: 0 0 0;
+}
+
+.controls input:checked + label.toggle .off {
+    background-color: #000;
+    color: #ccc;
+}
+
+#patches {
+    position: fixed;
+    top: 72%;
+    bottom: 0;
+    left: 32px;
+    right: 32px;
+    font-size: 12px;
+    overflow: auto;
+    border: 2px solid #1981dc;
+    border-bottom: none;
+    background: #333;
+    display: none;
+    box-shadow: 0 0 10px #000;
+}
+
+#patchlist {
+    padding: 0 16px 24px 16px;
+}
+
+#patches.open {
+    display: block;
+}
+
+#patches h2 {
+    background-color: #1981dc;
+    padding: 2px 0 2px 10px;
+}
+
+.pc.empty {
+    display: none;
+}
+.savemode .pc.empty {
+    display: inline-block;
+}
+
+.pc {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    width: 80px;
+    text-align: center;
+    cursor: pointer;
+    padding: 4px 4px 4px 4px;
+}
+.pc:hover {
+    background-color: #1981dc;
+}
+
+.pc span {
+    font-size: 10px;
+}
+
+.pc a.del {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #000;
+    border-radius: 12px;
+    padding: 1px 3px;
+    font-size: 8px;
+}
+.pc a.del:hover {
+    background: #c00;
+}
+.pc:hover a.del {
+    display: block;
+}
+
+.patch {
+    background: #999;
+    border-radius: 4px;
+    border: 1px solid #000;
+    padding: 4px;
+}
+
+.savemode .patch {
+    background: #c33;
+}
+
+.selected .patch {
+    background: #68c;
+}
+
+.savemode .selected .patch {
+    background: #811;
+}
+
+.empty .patch {
+    background: #555;
+    color: #999;
+    cursor: default;
+}
+
+.savemode .empty .patch {
+    background: #655;
+    cursor: pointer;
+}
+
+input.switch {
+    visibility: hidden;
+    position: absolute;
+}
+input.switch + label {
+    width: 80px;
+    text-align: center;
+    background: #666;
+    border: 1px solid #777;
+    padding: 4px 12px;
+    margin-left: 5px;
+    color: #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input.switch:checked + label {
+    background: #c33;
+    color: #fff;
+    border-color: #000;
+}
+
+#copypaste {
+    display: none;
+}
