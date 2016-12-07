@@ -486,7 +486,7 @@ $(function() {
             midi.sendCC(cc, aggregated[cc]); 
         }
         else {
-            midi.sendCC(cc, checked?1:0);
+            midi.sendCC(cc, checked?64:0);
         }
     });
     $("input[type=checkbox]").on("midi:update", function(e, val) {
