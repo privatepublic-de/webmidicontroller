@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>AXOTRAUT</title>
+    <link rel="stylesheet" href="res/controller.css" type="text/css" />
+    <script src="res/jquery.js"></script>
+    <script src="res/controller.js" data-settings-prefix="traut_"></script>
+    <style>
+        section {
+            border-bottom-color: #928D85;
+            min-height: 257px;
+        }
+        section h2 {
+            background-color: #928D85;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AXOTRAUT</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>MIXTUR</h2>
+            <div class="group">
+                <h2>OCTAVE</h2>
+                <div class="controls">
+                    <input type="radio" id="trup1" data-cc="41" value="2" name="trup1" />
+                    <label for="trup1">&nbsp;2'&nbsp;</label>
+                    <input type="radio" id="trup2" data-cc="41" value="1" name="trup1"/>
+                    <label for="trup2">&nbsp;4'&nbsp;</label>
+                    <input type="radio" id="trup3" data-cc="41" value="0" name="trup1" checked />
+                    <label for="trup3">&nbsp;8'&nbsp;</label>
+                </div>
+            </div>
+            <div class="group">
+                <h2>OSC 1</h2>
+                <div class="controls">
+                    <input type="radio" id="d11" data-cc="4" value="0" name="div1" checked />
+                    <label for="d11">1:1</label>
+                    <input type="radio" id="d12" data-cc="4" value="1" name="div1"/>
+                    <label for="d12">1:2</label>
+                    <input type="radio" id="d13" data-cc="4" value="2" name="div1"/>
+                    <label for="d13">1:3</label>
+                    <input type="radio" id="d14" data-cc="4" value="3" name="div1"/>
+                    <label for="d14">1:4</label>
+                    <input type="radio" id="d15" data-cc="4" value="4" name="div1"/>
+                    <label for="d15">1:5</label>
+                    <input type="radio" id="d16" data-cc="4" value="5" name="div1"/>
+                    <label for="d16">1:6</label>
+                    <input type="radio" id="d17" data-cc="4" value="6" name="div1"/>
+                    <label for="d17">1:7</label>
+                    <input type="radio" id="d18" data-cc="4" value="7" name="div1"/>
+                    <label for="d18">1:8</label>
+                </div>
+                <div class="fader" data-cc="8" data-label="LEVEL" data-init="64"></div>
+            </div>
+
+            <div class="group">
+                <h2>OSC 2</h2>
+                <div class="controls">
+                    <input type="radio" id="d21" data-cc="5" value="0" name="div2" checked />
+                    <label for="d21">1:1</label>
+                    <input type="radio" id="d22" data-cc="5" value="1" name="div2"/>
+                    <label for="d22">1:2</label>
+                    <input type="radio" id="d23" data-cc="5" value="2" name="div2"/>
+                    <label for="d23">1:3</label>
+                    <input type="radio" id="d24" data-cc="5" value="3" name="div2"/>
+                    <label for="d24">1:4</label>
+                    <input type="radio" id="d25" data-cc="5" value="4" name="div2"/>
+                    <label for="d25">1:5</label>
+                    <input type="radio" id="d26" data-cc="5" value="5" name="div2"/>
+                    <label for="d26">1:6</label>
+                    <input type="radio" id="d27" data-cc="5" value="6" name="div2"/>
+                    <label for="d27">1:7</label>
+                    <input type="radio" id="d28" data-cc="5" value="7" name="div2"/>
+                    <label for="d28">1:8</label>
+                </div>
+                <div class="fader" data-cc="9" data-label="LEVEL" data-init="64"></div>
+            </div>
+
+            <div class="group">
+                <h2>OSC 3</h2>
+                <div class="controls">
+                    <input type="radio" id="d31" data-cc="6" value="0" name="div3" checked />
+                    <label for="d31">1:1</label>
+                    <input type="radio" id="d32" data-cc="6" value="1" name="div3"/>
+                    <label for="d32">1:2</label>
+                    <input type="radio" id="d33" data-cc="6" value="2" name="div3"/>
+                    <label for="d33">1:3</label>
+                    <input type="radio" id="d34" data-cc="6" value="3" name="div3"/>
+                    <label for="d34">1:4</label>
+                    <input type="radio" id="d35" data-cc="6" value="4" name="div3"/>
+                    <label for="d35">1:5</label>
+                    <input type="radio" id="d36" data-cc="6" value="5" name="div3"/>
+                    <label for="d36">1:6</label>
+                    <input type="radio" id="d37" data-cc="6" value="6" name="div3"/>
+                    <label for="d37">1:7</label>
+                    <input type="radio" id="d38" data-cc="6" value="7" name="div3"/>
+                    <label for="d38">1:8</label>
+                </div>
+                <div class="fader" data-cc="10" data-label="LEVEL" data-init="64"></div>
+            </div>
+
+            <div class="group">
+                <h2>OSC 4</h2>
+                <div class="controls">
+                    <input type="radio" id="d41" data-cc="36" value="0" name="div4" checked />
+                    <label for="d41">1:1</label>
+                    <input type="radio" id="d42" data-cc="36" value="1" name="div4"/>
+                    <label for="d42">1:2</label>
+                    <input type="radio" id="d43" data-cc="36" value="2" name="div4"/>
+                    <label for="d43">1:3</label>
+                    <input type="radio" id="d44" data-cc="36" value="3" name="div4"/>
+                    <label for="d44">1:4</label>
+                    <input type="radio" id="d45" data-cc="36" value="4" name="div4"/>
+                    <label for="d45">1:5</label>
+                    <input type="radio" id="d46" data-cc="36" value="5" name="div4"/>
+                    <label for="d46">1:6</label>
+                    <input type="radio" id="d47" data-cc="36" value="6" name="div4"/>
+                    <label for="d47">1:7</label>
+                    <input type="radio" id="d48" data-cc="36" value="7" name="div4"/>
+                    <label for="d48">1:8</label>
+                </div>
+                <div class="fader" data-cc="11" data-label="LEVEL" data-init="64"></div>
+            </div>
+
+            <div class="group">
+                <h2>NOISE</h2>
+                <div class="group">
+                    <div class="fader" data-cc="13" data-label="LEVEL" data-init="0"></div>
+                </div>
+            </div>
+
+            <div class="group gapleft">
+                <h2>PORTAMENTO</h2>
+                <div class="group">
+                    <div class="fader" data-cc="3" data-label="TIME" data-init="24"></div>
+                    <br />
+                    <div class="controls">
+                        <input type="checkbox" id="btnport" data-cc="2" />
+                        <label for="btnport">&nbsp;ON&nbsp;</label>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <h2>FILTER</h2>
+            <div class="group">
+                <h2>FILTER</h2>
+                <div class="fader" data-cc="42" data-label="TYPE" data-init="0"></div>
+                <div class="fader" data-cc="74" data-label="FREQ" data-init="64"></div>
+                <div class="fader" data-cc="71" data-label="Q" data-init="64"></div>
+            </div>
+            <div class="group">
+                <h2>ENVELOPE</h2>
+                <div class="fader" data-cc="106" data-label="A" data-init="74"></div>
+                <div class="fader" data-cc="107" data-label="D" data-init="127"></div>
+                <div class="fader" data-cc="110" data-label="S" data-init="127"></div>
+                <div class="fader" data-cc="109" data-label="R" data-init="99"></div>
+                <div class="fader gapleft" data-cc="108" data-label="AMOUNT" data-init="64"></div>
+            </div>
+            <br />&nbsp;
+        </section>
+
+        <section>
+            <h2>RESONANT FILTER BANK</h2>
+            <div class="group">
+                <h2>FILTER 1</h2>
+                <div class="group">
+                    <div class="fader" data-cc="14" data-label="FREQ" data-init="64"></div>
+                    <div class="fader" data-cc="15" data-label="Q" data-init="64"></div>
+                    <br/>
+                    <div class="controls">
+                        <input type="checkbox" id="bplp1" data-cc="17" />
+                        <label for="bplp1" class="toggle"><span class="off">BAND</span><span class="on">LOW</span></label>
+                    </div>
+                </div>
+                <div class="fader" data-cc="16" data-label="LEVEL" data-init="64"></div>
+            </div>
+
+            <div class="group">
+                <h2>FILTER 2</h2>
+                <div class="group">
+                    <div class="fader" data-cc="18" data-label="FREQ" data-init="64"></div>
+                    <div class="fader" data-cc="19" data-label="Q" data-init="64"></div>
+                    <br/>
+                    <div class="controls">
+                        <input type="checkbox" id="bplp2" data-cc="21" />
+                        <label for="bplp2" class="toggle"><span class="off">BAND</span><span class="on">LOW</span></label>
+                    </div>
+                </div>
+                <div class="fader" data-cc="20" data-label="LEVEL" data-init="64"></div>
+            </div>
+
+            <div class="group">
+                <h2>FILTER 3</h2>
+                <div class="group">
+                    <div class="fader" data-cc="22" data-label="FREQ" data-init="64"></div>
+                    <div class="fader" data-cc="23" data-label="Q" data-init="64"></div>
+                    <br/>
+                    <div class="controls">
+                        <input type="checkbox" id="bplp3" data-cc="25" />
+                        <label for="bplp3" class="toggle"><span class="off">BAND</span><span class="on">LOW</span></label>
+                    </div>
+                </div>
+                <div class="fader" data-cc="24" data-label="LEVEL" data-init="64"></div>
+            </div>
+
+            <div class="group">
+                <h2>FILTER 4</h2>             
+                <div class="group">
+                    <div class="fader" data-cc="26" data-label="FREQ" data-init="64"></div>
+                    <div class="fader" data-cc="27" data-label="Q" data-init="64"></div>
+                    <br/>
+                    <div class="controls">
+                        <input type="checkbox" id="bplp4" data-cc="29" />
+                        <label for="bplp4" class="toggle"><span class="off">BAND</span><span class="on">LOW</span></label>
+                    </div>
+                </div>
+                <div class="fader" data-cc="28" data-label="LEVEL" data-init="64"></div>
+            </div>
+
+            <div class="group">
+                <h2>KEYBD</h2>
+                <div class="fader" data-cc="12" data-label="FOLLOW" data-init="0"></div>
+            </div>
+
+        </section>
+
+        <section>
+            <h2>MODULATION</h2>
+            <div class="fader" style="vertical-align:bottom" data-cc="35" data-label="RATE" data-init="64"></div>
+            <div class="fader" style="vertical-align:bottom" data-cc="43" data-label="DELAY" data-init="0"></div>
+            <div class="group gapleft">
+                <h2>TARGETS</h2>
+                <div class="fader" data-cc="40" data-label="PITCH" data-init="0"></div>
+                <div class="fader" data-cc="37" data-label="FILTER" data-init="0"></div>
+                <div class="fader" data-cc="38" data-label="BANK" data-init="0"></div>
+                <div class="fader" data-cc="39" data-label="VOL" data-init="0"></div>
+            </div>
+        </section>
+
+        
+        <section>
+            <h2>OUTPUT</h2>
+            
+            <div class="group">
+                <h2>ENVELOPE</h2>
+                <div class="fader" data-cc="73" data-label="A" data-init="74"></div>
+                <div class="fader" data-cc="75" data-label="D" data-init="127"></div>
+                <div class="fader" data-cc="76" data-label="S" data-init="127"></div>
+                <div class="fader" data-cc="72" data-label="R" data-init="99"></div>
+            </div>
+            <div class="fader gapleft" style="vertical-align:bottom" data-cc="7" data-label="VOLUME" data-init="65"></div>
+        </section>
+
+    </main>
+
+</body>
+</html>
