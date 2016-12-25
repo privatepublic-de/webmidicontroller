@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>MS-19</title>
+    <link rel="stylesheet" href="res/controller.css" type="text/css" />
+    <script src="res/jquery.js"></script>
+    <script src="res/controller.js" 
+        data-settings-prefix="ms19_"
+    ></script>    
+    <style>
+        section {
+            border-bottom-color: #eee;
+            min-height: 234px;
+        }
+        section > h2 {
+            background-color: #eee;
+            color: #000;
+        }
+        main p {
+            margin-top: 0;
+        }
+        .controls {
+            vertical-align: top;
+        }
+        label.ic_sqr, label.ic_tri {
+            padding-left: 18px;
+            background-repeat: no-repeat;
+            background-position: left center;
+        }
+        label.ic_sqr {
+            background-image: url("res/ic-sqr.png");
+        }
+        label.ic_tri {
+            background-image: url("res/ic-tri.png");
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>MS-19</h1>
+    </header>
+
+    <main>
+        
+        <section>
+            <h2>VCO 1</h2>
+            <div class="group">
+                <div class="controls">
+                    <p>WAVE</p>
+                    <input type="radio" id="wv11" data-cc="12" value="0" name="wv11"/>
+                    <label for="wv11">TRIANGLE</label>
+                    <input type="radio" id="wv12" data-cc="12" value="1" checked name="wv11" />
+                    <label for="wv12">SAWTOOTH</label>
+                    <input type="radio" id="wv13" data-cc="12" value="2" name="wv11" />
+                    <label for="wv13">SQUARE</label>
+                    <input type="radio" id="wv14" data-cc="12" value="3" name="wv11"/>
+                    <label for="wv14">NOISE</label>
+                </div>
+                <br/>
+                <div class="rotary" data-cc="70" data-label="PW" data-init="0"></div>
+            </div>
+            <div class="controls">
+                <p>SCALE</p>
+                <input type="radio" id="sc11" data-cc="14" value="0" name="sc11"/>
+                <label for="sc11">32 '</label>
+                <input type="radio" id="sc12" data-cc="14" value="1" name="sc11" />
+                <label for="sc12">16 '</label>
+                <input type="radio" id="sc13" data-cc="14" value="2" checked name="sc11" />
+                <label for="sc13">8 '</label>
+                <input type="radio" id="sc14" data-cc="14" value="3" name="sc11"/>
+                <label for="sc14">4 '</label>
+            </div>            
+        </section>
+
+        <section>
+            <h2>VCO 2</h2>
+            <div class="controls">
+                <p>WAVE</p>
+                <input type="radio" id="wv21" data-cc="15" value="0" name="wv21"/>
+                <label for="wv21">SAWTOOTH</label>
+                <input type="radio" id="wv22" data-cc="15" value="1" checked name="wv21" />
+                <label for="wv22">SQUARE</label>
+                <input type="radio" id="wv23" data-cc="15" value="2" name="wv21" />
+                <label for="wv23">PULSE</label>
+                <input type="radio" id="wv24" data-cc="15" value="3" name="wv21"/>
+                <label for="wv24">RING</label>
+            </div>
+            <div class="group">
+                <div class="controls">
+                    <p>SCALE</p>
+                    <input type="radio" id="sc21" data-cc="17" value="0" name="sc21"/>
+                    <label for="sc21">16 '</label>
+                    <input type="radio" id="sc22" data-cc="17" value="1" name="sc21" />
+                    <label for="sc22">8 '</label>
+                    <input type="radio" id="sc23" data-cc="17" value="2" checked name="sc21" />
+                    <label for="sc23">4 '</label>
+                    <input type="radio" id="sc24" data-cc="17" value="3" name="sc21"/>
+                    <label for="sc24">2 '</label>
+                </div>
+                <br/>
+                <div class="rotary" data-cc="16" data-label="TUNE" data-init="65"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>VCO MIXER</h2>
+            <div class="fader" data-cc="18" data-label="VCO 1" data-init="64"></div>
+            <div class="fader" data-cc="19" data-label="VCO 2" data-init="64"></div>
+            <div class="fader gapleft" data-cc="33" data-label="MG INT" data-init="0"></div>
+            <div class="fader" data-cc="34" data-label="EG1 INT" data-init="0"></div>
+            <div class="fader gapleft" data-cc="5" data-label="PORTA" data-init="0"></div>
+        </section>
+        
+        <section>
+            <h2>HIGHPASS FILTER</h2>
+            <div class="group">
+                <div class="rotary big" data-cc="20" data-label="CUTOFF" data-init="0"></div>
+                <br/>
+                <div class="rotary" data-cc="21" data-label="RES" data-init="0"></div>
+            </div>
+            <div class="fader gapleft" data-cc="23" data-label="MG INT" data-init="0"></div>
+            <div class="fader" data-cc="24" data-label="EG2±" data-init="0"></div>
+        </section>
+
+        <section>
+            <h2>LOWPASS FILTER</h2>
+            <div class="group">
+                <div class="rotary big" data-cc="74" data-label="CUTOFF" data-init="0"></div>
+                <br/>
+                <div class="rotary" data-cc="71" data-label="RES" data-init="0"></div>
+            </div>
+            <div class="fader gapleft" data-cc="25" data-label="MG INT" data-init="0"></div>
+            <div class="fader" data-cc="26" data-label="EG2±" data-init="0"></div>
+        </section>
+        </br>
+        <section>
+            <h2>MG</h2>
+            <div class="group">
+                <div class="rotary" data-cc="27" data-label="WAVE" data-init="64"></div>
+                <br/>
+                <div class="rotary big" data-cc="28" data-label="FREQ" data-init="12"></div>
+            </div>
+            <div class="group">
+                <h2>TARGETS</h2>
+                <div class="controls">
+                    <input type="checkbox" id="mgtrivco2" data-cc="42" />
+                    <label for="mgtrivco2" class="ic_tri">VCO2</label>
+                    <input type="checkbox" id="mgsqrvco2" data-cc="43" />
+                    <label for="mgsqrvco2" class="ic_sqr">VCO2</label>
+                    <input type="checkbox" id="mgtrivca" data-cc="44" />
+                    <label for="mgtrivca" class="ic_tri">VCA</label>
+                    <input type="checkbox" id="mgsqrvca" data-cc="45" />
+                    <label for="mgsqrvca" class="ic_sqr">VCA</label>
+                </div>
+                <div class="fader" data-cc="47" data-label="INT" data-init="0"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>EG 1</h2>
+            <div class="group">
+                <h2>ENVELOPE</h2>
+                <div class="fader" data-cc="29" data-label="DELAY" data-init="0"></div>
+                <div class="fader" data-cc="30" data-label="A" data-init="64"></div>
+                <div class="fader" data-cc="31" data-label="R" data-init="12"></div>
+            </div>
+            <div class="group">
+                <h2>TARGETS</h2>
+                <div class="controls">
+                    <p>+</p>
+                    <input type="checkbox" id="egvco2" data-cc="22" />
+                    <label for="egvco2">VCO2</label>
+                    <input type="checkbox" id="eghpf" data-cc="36" />
+                    <label for="eghpf">HPF</label>
+                    <input type="checkbox" id="eglpf" data-cc="37" />
+                    <label for="eglpf">LPF</label>
+                    <br/>
+                    <input type="checkbox" id="egmgint" data-cc="35" />
+                    <label for="egmgint">MG INT</label>
+                </div>
+                <div class="controls">
+                    <p>-</p>
+                    <input type="checkbox" id="egvco21" data-cc="39" />
+                    <label for="egvco21">VCO2</label>
+                    <input type="checkbox" id="eghpf1" data-cc="40" />
+                    <label for="eghpf1">HPF</label>
+                    <input type="checkbox" id="eglpf1" data-cc="41" />
+                    <label for="eglpf1">LPF</label>
+                    <br/>                    
+                    <input type="checkbox" id="egmgint1" data-cc="38" />
+                    <label for="egmgint1">MG INT</label>
+                </div>
+                <div class="fader" data-cc="13" data-label="INT" data-init="0"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>EG 2</h2>
+            <div class="group" style="vertical-align: bottom">
+                <div class="fader" data-cc="32" data-label="HOLD" data-init="0"></div>
+            </div>
+            <div class="group">
+                <h2>ENVELOPE</h2>
+                <div class="fader" data-cc="73" data-label="A" data-init="74"></div>
+                <div class="fader" data-cc="75" data-label="D" data-init="127"></div>
+                <div class="fader" data-cc="76" data-label="S" data-init="127"></div>
+                <div class="fader" data-cc="72" data-label="R" data-init="99"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>S&amp;H</h2>
+            <div class="group">
+                <h2>TRIGGER</h2>
+                <div class="controls">
+                    <input type="checkbox" id="shkbd" data-cc="48" />
+                    <label for="shkbd" class="toggle vert"><span class="off">MG</span><span class="on">KEYB</span></label>
+                </div>
+                <h2 style="margin-top:1.5em">SOURCE</h2>
+                <div class="controls">
+                    <input type="checkbox" id="shsrc" data-cc="54" />
+                    <label for="shsrc" class="toggle vert"><span class="off">WHITE</span><span class="on">PINK</span></label>
+                </div>
+            </div>
+            <div class="group">
+                <h2>TARGETS</h2>
+                <div class="controls">
+                    <input type="checkbox" id="shvcos" data-cc="49" />
+                    <label for="shvcos">VCOS</label>
+                    <input type="checkbox" id="shvco2" data-cc="50" />
+                    <label for="shvco2">VCO2</label>
+                    <input type="checkbox" id="shhpf" data-cc="51" />
+                    <label for="shhpf">HPF</label>
+                    <input type="checkbox" id="shlpf" data-cc="52" />
+                    <label for="shlpf">LPF</label>
+                </div>
+                <div class="fader" data-cc="53" data-label="INT" data-init="0"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>OUTPUT</h2>
+            <div class="fader" data-cc="7" data-label="VOLUME" data-init="64"></div>
+        </section>
+
+    </main>
+
+</body>
+</html>
