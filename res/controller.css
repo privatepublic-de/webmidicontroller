@@ -58,7 +58,8 @@ th {
     text-align: left;
 }
 
-.fader {
+.fader,
+.rotary {
     margin: 0 8px;
     display: inline-block;
     vertical-align: middle;
@@ -103,7 +104,8 @@ th {
     border-top: 1px dotted #777;
 }
 
-.fader input {
+.fader input,
+.rotary input {
     width: 100%;
     border: 0;
     padding: 0;
@@ -111,20 +113,23 @@ th {
     background-color: transparent;
     color: #eee;
 }
-.fader label {
+.fader label,
+.rotary label {
     text-align: center;
     display: block;
     width: 100%;
     color: #eee;
-    font-weight: bold;
+    font-weight: normal;
     font-size: 12px;
     margin: 0 0 4px 0;
 }
-.fader label:before {
+.fader label:before,
+.rotary label:before {
     content: "";
     margin-left: -100%;
 }
-.fader label:after {
+.fader label:after,
+.rotary label:after {
     content: "";
     margin-right: -100%;
 }
@@ -173,6 +178,7 @@ section {
 section h2 {
     background-color: #af181d;
     text-align: center;
+    padding: 2px 4px;
 }
 
 .group {
@@ -392,3 +398,57 @@ input.switch:checked + label {
 #copypaste {
     display: none;
 }
+
+
+.rotary {
+    width: 48px;
+    margin: 12px 0;
+}
+
+.rotary .ctrl {
+    position: relative;
+    background: #333 url("bg-rotary.png") no-repeat center center;
+    background-size: 200%;
+    height: 48px;
+    width: 48px;
+    border-radius: 48px;
+    border: 1px solid #000;
+}
+.rotary .handle {
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    top: -4px;
+    left: 19px;
+    transform-origin: 5px 28px;
+    transform: rotate(0deg);
+    border-radius: 10px 10px 0 0;
+    background: #1981dc;
+    box-shadow: 1px 1px 6px #000;
+}
+
+.rotary input {
+    display: block;
+    position: absolute;
+    bottom: 0;
+}
+
+
+.rotary.big {
+    width: 64px;
+}
+
+.rotary.big .ctrl {
+    height: 64px;
+    width: 64px;
+    border-radius: 64px;
+}
+.rotary.big .handle {
+    width: 12px;
+    height: 36px;
+    border-radius: 12px 12px 4px 4px;
+    top: -4px;
+    left: 26px;
+    transform-origin: 6px 36px;
+}
+

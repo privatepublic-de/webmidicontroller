@@ -305,7 +305,7 @@ $(function() {
 
     var buildPatchesUI = function buildPatchesUI(showme) {
         $("#patches").remove();
-        $("<div id='patches'><h2><button data-toggles='patches'>Close</button>PATCHES</h2><p><input type='checkbox' id='save' class='switch'/><label for='save'>Save...</label> <button id='sendbutton' class='pull-right'>Send Current Panel</button><button id='importbutton' class='pull-right'>Import</button><button id='exportbutton' class='pull-right'>Export</button></p><div><textarea id='copypaste'></textarea></div><div id='patchlist'></div></div>").appendTo("body");
+        $("<div id='patches'class='open'><h2><button data-toggles='patches'>Close</button>PATCHES</h2><p><input type='checkbox' id='save' class='switch'/><label for='save'>Save...</label> <button id='sendbutton' class='pull-right'>Send Current Panel</button><button id='importbutton' class='pull-right'>Import</button><button id='exportbutton' class='pull-right'>Export</button></p><div><textarea id='copypaste'></textarea></div><div id='patchlist'></div></div>").appendTo("body");
         $("#sendbutton").click(function() {
             $("main input").change();
         }); 
@@ -377,8 +377,102 @@ $(function() {
         $("#"+toggle).toggleClass("open");
     });
 
+    var usedccs = {};
+
+    $(".rotary").each(function() {
+        var el = $(this);
+        var initval = el.data("init")||0;
+        var recentValue = initval;
+        el.append("<label>"+el.data("label")+"</label><div class='ctrl'><div class=\"handle\"></div><input type='text' /></div>");
+        var input = el.find("input");
+        var handle = el.find(".handle")
+        console.log(handle);
+        var ctrl = el.find(".ctrl")
+        var cc = el.data("cc");
+        input.change(function() {
+            var value = $(this).val();
+            midi.sendCC(cc, value);
+        });
+        var update = function(val) {
+            var ang = parseInt((270*(val/127.0))-135);
+            handle.css({"transform":"rotate("+ang+"deg)"});
+            input.val(val);
+            if (recentValue!=val) {
+                recentValue = val;
+                input.change();
+            }
+        };
+        var updateFromCoords = function(x, y) {
+            var y0 = y - (ctrl.offset().top + ctrl.height()/2);
+            var x0 = x - (ctrl.offset().left + ctrl.width()/2);
+            var ang = parseInt(Math.atan2(y0, x0)*(180/Math.PI));
+            if (ang<0 && ang>=-90) { // TODO clean up matching areas
+                ang += 225;
+            }
+            else if (ang>=0 && ang<45) {
+                ang +=225;
+            }
+            else if (ang<-90) {
+                ang += 225;
+            }
+            else if (ang>135) {
+                ang -= 135;
+            }
+            else {
+                if (ang<90) {
+                    ang = 270;
+                }
+                else {
+                    ang = 0;
+                }
+            }
+            var val = (ang/270.0)*127;
+            update(parseInt(val));            
+        }
+        update(initval);
+        el.on("midi:update", function(ev, value) {
+            update(value);
+        })
+
+        var isDragging = false;
+        el.mousedown(function(ev) {
+            ev.preventDefault();
+            updateFromCoords(ev.pageX, ev.pageY);
+            isDragging = true;
+        })
+        .dblclick(function(ev) {
+            ev.preventDefault();
+            update(64);
+        })
+        .on("mousewheel", function(ev) {
+            if (conf.mouseWheelFaders) {
+                ev.preventDefault();
+                var dir = ev.originalEvent.wheelDelta>0?1:-1;
+                var val = parseInt(input.val())+ev.originalEvent.wheelDelta/8.0;
+                val = Math.max(0, Math.min(val, 127));
+                update(parseInt(val));
+            }
+        });
+        $(window).mousemove(function(ev){
+            if (isDragging) {
+                ev.preventDefault();
+                updateFromCoords(ev.pageX, ev.pageY);
+            }
+        })
+        .mouseup(function(ev) {
+            if (isDragging) {
+                ev.preventDefault();
+                updateFromCoords(ev.pageX, ev.pageY);
+                isDragging = false;
+            }
+        });
+
+
+
+    });
+
     $(".fader").each(function() {
-        el = $(this);
+        var el = $(this);
         var initval = el.data("init")||0;
         el.append("<label>"+el.data("label")+"</label><div class='ctrl'><span class='center'></span><div class=\"scale\"></div><div class=\"handle\"></div></div><input type='text' />");
         var handle = el.find(".handle");
@@ -388,6 +482,7 @@ $(function() {
         var height = ctrl.height()-handle.height();
         var recentValue = initval;
         var cc = el.data("cc");
+        usedccs[cc] = (usedccs[cc]?usedccs[cc]:"")+el.data("label")+" ";
         el.attr("title", "cc:"+cc);
 
         handle.css({"top": (127-initval)/127*height});
@@ -452,7 +547,7 @@ $(function() {
                 update((127-val)/127.0*height);
             }
         });
-        $("body").mousemove(function(ev){
+        $(window).mousemove(function(ev){
             if (isDragging) {
                 ev.preventDefault();
                 var currentY = ev.pageY - ctrl.offset().top-handleMiddle;
@@ -472,8 +567,9 @@ $(function() {
     $("input").each(function() {
         var el = $(this);
         var cc = el.data("cc");
-        if (cc) {
+        if (cc!==undefined) {
             el.next("label").attr("title","cc:"+cc);
+            usedccs[cc] = (usedccs[cc]?usedccs[cc]:"")+el.next("label").text()+" ";
         }
     });
     $("input[type=checkbox]").on("change", function(e) {
@@ -517,4 +613,7 @@ $(function() {
         var cc = el.data("cc");
         el.prop("checked", el.val()==val);
     });
+
+    //console.log(usedccs);
+
 });
