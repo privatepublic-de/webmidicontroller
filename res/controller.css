@@ -425,6 +425,7 @@ input.switch:checked + label {
     border-radius: 10px 10px 0 0;
     background: #1981dc;
     box-shadow: 1px 1px 6px #000;
+    cursor: pointer;
 }
 
 .rotary input {
@@ -452,3 +453,6 @@ input.switch:checked + label {
     transform-origin: 6px 36px;
 }
 
+.handle.dragging {
+    background-color: #A4D4FF!important;
+}
