@@ -385,9 +385,8 @@ $(function() {
         var recentValue = initval;
         el.append("<label>"+el.data("label")+"</label><div class='ctrl'><div class=\"handle\"></div><input type='text' /></div>");
         var input = el.find("input");
-        var handle = el.find(".handle")
-        console.log(handle);
-        var ctrl = el.find(".ctrl")
+        var handle = el.find(".handle");
+        var ctrl = el.find(".ctrl");
         var cc = el.data("cc");
         input.change(function() {
             var value = $(this).val();
@@ -439,6 +438,7 @@ $(function() {
             ev.preventDefault();
             updateFromCoords(ev.pageX, ev.pageY);
             isDragging = true;
+            handle.addClass("dragging");
         })
         .dblclick(function(ev) {
             ev.preventDefault();
@@ -464,6 +464,7 @@ $(function() {
                 ev.preventDefault();
                 updateFromCoords(ev.pageX, ev.pageY);
                 isDragging = false;
+                handle.removeClass("dragging");
             }
         });
 
@@ -531,6 +532,7 @@ $(function() {
             else {
                 var clickedY = ev.pageY - ctrl.offset().top -handleMiddle;
                 isDragging = true;
+                handle.addClass("dragging");
                 update(clickedY);
             }
         })
@@ -560,6 +562,7 @@ $(function() {
                 var currentY = ev.pageY - ctrl.offset().top-handleMiddle;
                 update(currentY);
                 isDragging = false;
+                handle.removeClass("dragging");
             }
         });
     });
