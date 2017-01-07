@@ -475,7 +475,7 @@ $(function() {
     $(".fader").each(function() {
         var el = $(this);
         var initval = el.data("init")||0;
-        el.append("<label>"+el.data("label")+"</label><div class='ctrl'><span class='center'></span><div class=\"scale\"></div><div class=\"handle\"></div></div><input type='text' />");
+        el.append("<label>"+el.data("label")+"</label><div class='ctrl'><div class=\"scale\"></div><span class='center'></span><div class=\"handle\"><input type='text' /></div></div>");
         var handle = el.find(".handle");
         var handleMiddle = handle.height()/2;
         var ctrl = el.find(".ctrl");
@@ -517,7 +517,7 @@ $(function() {
         var isDragging = false;
         el.mousedown(function(ev) {
             ev.preventDefault();
-            if (ev.target!=handle[0]) {
+            if (ev.target!=handle[0] && ev.target!=input[0]) {
                 var yps = ev.pageY - handle.offset().top;
                 var val = parseInt(input.val());
                 if (yps<0) {

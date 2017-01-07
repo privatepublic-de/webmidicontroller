@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>SHAPY</title>
+    <link rel="stylesheet" href="res/controller.css" type="text/css" />
+    <script src="res/jquery.js"></script>
+    <script src="res/controller.js" data-settings-prefix="shpy_"></script>
+    <style>
+        section {
+            border-bottom-color: #195E96;
+        }
+        section h2 {
+            background-color: #195E96;
+        }
+        section.altcol {
+            border-bottom-color: #E34450;
+        }
+        section.altcol h2 {
+            background-color: #E34450;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>SHAPY</h1>
+    </header>
+
+    <main>
+        <section class="altcol">
+            <h2>SHAPE</h2>
+            <div class="group">
+                <h2>SOURCE</h2>
+                <div class="group"><div class="fader bipolar" data-cc="12" data-label="SQR" data-init="0"></div><br/>TRI</div>
+                <div class="controls">
+                    <p>SQR OCTAVE</p>
+                    <input type="radio" id="sc11" data-cc="13" value="2" name="sc11"/>
+                    <label for="sc11">UP</label>
+                    <input type="radio" id="sc12" data-cc="13" value="1" checked name="sc11" />
+                    <label for="sc12">SAME</label>
+                    <input type="radio" id="sc13" data-cc="13" value="0" name="sc11" />
+                    <label for="sc13">DOWN</label>
+                </div>
+                <div class="fader" data-cc="14" data-label="NOISE" data-init="0"></div>
+            </div>
+            <div class="group">
+                <h2>PROCESSOR</h2>
+                <div class="fader" data-cc="16" data-label="GAIN" data-init="87"></div>
+                <div class="fader bipolar" data-cc="17" data-label="CLIP" data-init="94"></div>
+                <div class="fader bipolar" data-cc="18" data-label="SYMM" data-init="26"></div>
+            </div>
+            <div class="group">
+                <h2>RINGMOD</h2>
+                <div class="fader" data-cc="15" data-label="LEVEL" data-init="0"></div>
+                <div class="fader bipolar" data-cc="51" data-label="PITCH" data-init="64"></div>
+            </div>
+            <div class="group">
+                <h2>DECIMATOR</h2>
+                <div class="group">
+                    <div class="fader" data-cc="44" data-label="LEVEL" data-init="0"></div>
+                    <div class="fader" data-cc="45" data-label="PITCH" data-init="64"></div>
+                    <br/>
+                    <div class="controls">
+                        <input type="checkbox" id="btn2" data-cc="46" />
+                        <label for="btn2">TRACK KEYB</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>SLOPE MOD</h2>
+            <div class="group">
+                <h2>SLOPE</h2>
+                <div class="group">
+                    <div class="fader" data-cc="19" data-label="UP" data-init="64"></div>
+                    <div class="fader" data-cc="20" data-label="DOWN" data-init="64"></div>
+                    <br/>
+                    <div class="controls">
+                        <input type="checkbox" id="btn1" data-cc="21" />
+                        <label for="btn1">LOOP</label>
+                    </div>
+                </div>
+                <div class="group"><div class="fader bipolar" data-cc="22" data-label="EXP" data-init="64"></div><br/>LOG</div>
+            </div>
+            <div class="group">
+                <h2>TARGETS</h2>
+                <div class="group">
+                    <div class="rotary bipolar" data-cc="23" data-label="WAVE" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="24" data-label="GAIN" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="25" data-label="CLIP" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="26" data-label="SYMM" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="28" data-label="RINGM" data-init="64"></div>
+                </div>
+                <br/>
+                <div class="group">
+                    <div class="rotary bipolar" data-cc="27" data-label="NOISE" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="29" data-label="VCF" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="47" data-label="DEC-P" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="49" data-label="DEC-L" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="30" data-label="PITCH" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="31" data-label="VOL" data-init="64"></div>                
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>LFO</h2>
+            <div class="group">
+                <h2>LFO</h2>
+                <div class="group">
+                    <div class="fader" data-cc="33" data-label="RATE" data-init="64"></div>
+                    <div class="fader bipolar" data-cc="32" data-label="SHAPE" data-init="64"></div>
+                    <div class="fader gapleft" data-cc="43" data-label="DELAY" data-init="0"></div>
+                </div>
+            </div>
+            <div class="group">
+                <h2>TARGETS</h2>
+                <div class="group">
+                    <div class="rotary bipolar" data-cc="34" data-label="WAVE" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="35" data-label="GAIN" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="36" data-label="CLIP" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="37" data-label="SYMM" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="39" data-label="RINGM" data-init="64"></div>
+                </div>
+                <br/>
+                <div class="group">
+                    <div class="rotary bipolar" data-cc="38" data-label="NOISE" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="40" data-label="VCF" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="48" data-label="DEC-P" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="50" data-label="DEC-L" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="41" data-label="PITCH" data-init="64"></div>    
+                    <div class="rotary bipolar" data-cc="42" data-label="VOL" data-init="64"></div>               
+                </div>
+            </div>
+        </section>
+
+        <section class="altcol">
+            <h2>OUTPUT</h2>
+            <div class="group">
+                <h2>ENVELOPE</h2>
+                <div class="fader" data-cc="73" data-label="A" data-init="19"></div>
+                <div class="fader" data-cc="75" data-label="D" data-init="127"></div>
+                <div class="fader" data-cc="76" data-label="S" data-init="127"></div>
+                <div class="fader" data-cc="72" data-label="R" data-init="64"></div>
+            </div>
+            <div class="group gapleft">
+                <h2>FILTER</h2>
+                <div class="fader" data-cc="108" data-label="DEPTH" data-init="0"></div>
+                <div class="group">
+                    <div class="rotary big" data-cc="74" data-label="FREQ" data-init="64"></div>
+                    <br/>
+                    <div class="rotary" data-cc="71" data-label="RES" data-init="0"></div>
+                </div>
+            </div>
+            <div class="group gapleft">
+                <h2>OUT</h2>
+                <div class="fader" data-cc="7" data-label="VOLUME" data-init="65"></div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

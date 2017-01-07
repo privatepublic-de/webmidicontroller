@@ -60,7 +60,7 @@ th {
 
 .fader,
 .rotary {
-    margin: 0 8px;
+    margin: 0 8px 4px 8px;
     display: inline-block;
     vertical-align: middle;
     width: 32px;
@@ -92,16 +92,26 @@ th {
     right: 25%;
     top: 0;
     bottom: 0;
-    background-color: #666;
+    background: #666 repeat-x url("bg-unipolar.png");
+    background-size: 100% 100%;
 	border-radius: 4px;
+    border: 1px solid #000;
 }
+.fader.bipolar .scale {
+    background-image: url("bg-bipolar.png");
+}
+
+
 
 .fader .center {
     position: absolute;
-    display: block;
+    display: none;
     width: 100%;
-    top: 50%;
     border-top: 1px dotted #777;
+}
+.fader.bipolar .center {
+    top: 49%;
+    display: block;
 }
 
 .fader input,
@@ -111,8 +121,13 @@ th {
     padding: 0;
     text-align: center;
     background-color: transparent;
-    color: #eee;
+    color: #ccc;
+    font-size: .9em;
+    user-select: none;
+    cursor: pointer;
+    vertical-align: top;
 }
+
 .fader label,
 .rotary label {
     text-align: center;
@@ -402,7 +417,7 @@ input.switch:checked + label {
 
 .rotary {
     width: 48px;
-    margin: 12px 0;
+    margin: 4px 6px;
 }
 
 .rotary .ctrl {
@@ -414,6 +429,12 @@ input.switch:checked + label {
     border-radius: 48px;
     border: 1px solid #000;
 }
+
+.rotary.bipolar .ctrl {
+    background-image: url("bg-rotary-bipolar.png");
+}
+
+
 .rotary .handle {
     position: absolute;
     width: 10px;
@@ -454,5 +475,5 @@ input.switch:checked + label {
 }
 
 .handle.dragging {
-    background-color: #A4D4FF!important;
+    background-color: #0D5492!important;
 }
