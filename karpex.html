@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>KARPEX</title>
+    <link rel="stylesheet" href="res/controller.css" type="text/css" />
+    <script src="res/jquery.js"></script>
+    <script src="res/controller.js" data-settings-prefix="karpex_"></script>
+    <style>
+        section {
+            border-bottom-color: #0099cc;
+        }
+        section h2 {
+            background-color: #0099cc;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>KARPEX</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>EXCITER</h2>
+            <div class="group">
+                <h2>TONE</h2>
+                <div class="group">
+                    <div class="fader" data-cc="70" data-label="BRIGHT" data-init="70"></div>
+                    <div class="fader" data-cc="77" data-label="HARMN" data-init="77"></div>
+                    <div class="group">
+                        <div class="rotary" data-cc="22" data-label="VELO" data-init="0"></div><br/>
+                        <div class="rotary" data-cc="21" data-label="RANDOMIZE" data-init="0"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="group">
+                <h2>EXCITATION</h2>
+                <div class="fader" data-cc="12" data-label="ATTACK" data-init="0"></div>
+                <div class="fader" data-cc="93" data-label="DECAY" data-init="76"></div>
+                <div class="group" style="vertical-align: bottom">
+                    <div class="controls">
+                        <input type="checkbox" id="btn1" data-cc="14" />
+                        <label for="btn1">REPEAT</label>
+                    </div>
+                    <br /><br />
+                    <div class="rotary" data-cc="13" data-label="RATE" data-init="16"></div>
+                </div>
+                <div class="fader" data-cc="113" data-label="FBK" data-init="120"></div>
+            </div>            
+        </section>
+
+        <section>
+            <h2>MODULATION</h2>
+            <div class="group">
+                <h2>LFO</h2>
+                <div class="fader" data-cc="17" data-label="RATE" data-init="48"></div>
+                <div class="fader" data-cc="16" data-label="DELAY" data-init="0"></div>
+            </div>
+            <div class="group">
+                <h2>TARGETS</h2>
+                <div class="rotary" data-cc="18" data-label="PITCH" data-init="0"></div>
+                <br />
+                <div class="rotary" data-cc="19" data-label="FILTER" data-init="0"></div>
+                <div class="rotary" data-cc="20" data-label="VOL" data-init="0"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>FILTER</h2>
+            <div class="controls">
+                <p>TYPE</p>
+                <input type="radio" id="optid1" data-cc="106" value="0" name="opt1" checked/>
+                <label for="optid1">BYPASS</label>
+                <input type="radio" id="optid2" data-cc="106" value="1" name="opt1"/>
+                <label for="optid2">LP</label>
+                <input type="radio" id="optid3" data-cc="106" value="2" name="opt1" />
+                <label for="optid3">BP</label>
+                <input type="radio" id="optid4" data-cc="106" value="2" name="opt1" />
+                <label for="optid4">HP</label>
+            </div>
+            <div class="fader" data-cc="74" data-label="FREQ" data-init="74"></div>
+            <div class="fader" data-cc="71" data-label="RES" data-init="0"></div>
+            <div class="fader bipolar gapleft" data-cc="108" data-label="ENV" data-init="64"></div>
+            <div class="fader" data-cc="94" data-label="KEYB" data-init="64"></div>
+        </section>
+
+        <section>
+            <h2>ENVELOPE</h2>
+            <div class="fader" data-cc="73" data-label="A" data-init="74"></div>
+            <div class="fader" data-cc="75" data-label="D" data-init="127"></div>
+            <div class="fader" data-cc="76" data-label="S" data-init="127"></div>
+            <div class="fader" data-cc="72" data-label="R" data-init="99"></div>
+            <div class="rotary" data-cc="23" data-label="VELO" data-init="0"></div>
+            <div class="fader gapleft" data-cc="15" data-label="GAIN" data-init="32"></div>
+            <div class="fader" data-cc="7" data-label="VOLUME" data-init="64"></div>
+        </section>
+
+    </main>
+
+</body>
+</html>

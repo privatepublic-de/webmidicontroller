@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>CHIPT</title>
+    <link rel="stylesheet" href="res/controller.css" type="text/css" />
+    <script src="res/jquery.js"></script>
+    <script src="res/controller.js" data-settings-prefix="chipt_"></script>
+    <style>
+        /* Here you can change the user interface's main color */
+        section.c1 {
+            border-bottom-color: #E90001;
+        }
+        section.c1 h2 {
+            background-color: #E90001;
+        }
+        section.c2 {
+            border-bottom-color: #EF5F2C;
+        }
+        section.c2 h2 {
+            background-color: #EF5F2C;
+        }
+        section.c3 {
+            border-bottom-color: #F0C000;
+        }
+        section.c3 h2 {
+            background-color: #F0C000;
+        }
+        section.c4 {
+            border-bottom-color: #4CAE00;
+        }
+        section.c4 h2 {
+            background-color: #4CAE00;
+        }
+        section.c5 {
+            border-bottom-color: #009BE4;
+        }
+        section.c5 h2 {
+            background-color: #009BE4;
+        }
+        section {
+            min-height: 223px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>CHIPT</h1><!-- Change this headline to the name of your controlled device -->
+    </header>
+
+    <main>
+        
+        <section class="c1">
+            <h2>WAVEFORM</h2>
+            <div class="controls inline" style="margin: 0 1em">
+<script>
+    for (var i=0;i<64;i++) {
+        if (i>0 &&i%8==0) {
+            document.write('<br/>');
+        }
+        document.write('<input type="radio" id="wv'+i+'" data-cc="14" value="'+i*2+'" name="optwave "'+(i==0?'checked':'')+'><label for="wv'+i+'">'+(i+1)+'</label>');
+    }
+</script>
+            </div>
+            <div class="fader" data-cc="29" data-label="NOISE" data-init="0"></div>
+        </section>
+
+        <section class="c2">
+            <h2>LFO1</h2>
+            <div class="group">
+                <h2>LFO</h2>
+                <div class="fader" data-cc="15" data-label="RATE" data-init="64"></div>
+                <div class="controls">
+                    <input type="radio" id="optid11" data-cc="16" value="0" name="opt11" checked/>
+                    <label for="optid11">SIN</label>
+                    <input type="radio" id="optid12" data-cc="16" value="1" name="opt11" />
+                    <label for="optid12">TRI</label>
+                    <input type="radio" id="optid13" data-cc="16" value="2" name="opt11" />
+                    <label for="optid13">UP</label>
+                    <input type="radio" id="optid14" data-cc="16" value="3" name="opt11" />
+                    <label for="optid14">DWN</label>
+                    <input type="radio" id="optid15" data-cc="16" value="4" name="opt11" />
+                    <label for="optid15">SQR</label>
+                    <input type="radio" id="optid16" data-cc="16" value="5" name="opt11" />
+                    <label for="optid16">S&amp;H</label>
+                </div>
+            </div>
+            <div class="group">
+                <h2>TARGETS</h2>
+                <div class="rotary" data-cc="17" data-label="VOL" data-init="0"></div>
+                <div class="rotary" data-cc="18" data-label="FILT" data-init="0"></div><br/>
+                <div class="rotary" data-cc="19" data-label="PW" data-init="0"></div>
+                <div class="rotary" data-cc="20" data-label="PHASE" data-init="0"></div>
+                <div class="rotary" data-cc="21" data-label="PITCH" data-init="0"></div>
+            </div>
+        </section>
+        <section class="c3">
+            <h2>LFO2</h2>
+            <div class="group">
+                <h2>LFO</h2>
+                <div class="fader" data-cc="22" data-label="RATE" data-init="64"></div>
+                <div class="controls">
+                    <input type="radio" id="optid21" data-cc="23" value="0" name="opt12" checked/>
+                    <label for="optid21">SIN</label>
+                    <input type="radio" id="optid22" data-cc="23" value="1" name="opt12" />
+                    <label for="optid22">TRI</label>
+                    <input type="radio" id="optid23" data-cc="23" value="2" name="opt12" />
+                    <label for="optid23">UP</label>
+                    <input type="radio" id="optid24" data-cc="23" value="3" name="opt12" />
+                    <label for="optid24">DWN</label>
+                    <input type="radio" id="optid25" data-cc="23" value="4" name="opt12" />
+                    <label for="optid25">SQR</label>
+                    <input type="radio" id="optid26" data-cc="23" value="5" name="opt12" />
+                    <label for="optid26">S&amp;H</label>
+                </div>
+            </div>
+            <div class="group">
+                <h2>TARGETS</h2>
+                <div class="rotary" data-cc="24" data-label="VOL" data-init="0"></div>
+                <div class="rotary" data-cc="25" data-label="FILT" data-init="0"></div><br/>
+                <div class="rotary" data-cc="26" data-label="PW" data-init="0"></div>
+                <div class="rotary" data-cc="27" data-label="PHASE" data-init="0"></div>
+                <div class="rotary" data-cc="28" data-label="PITCH" data-init="0"></div>
+            </div>
+        </section>
+
+        <div class="stick">        
+            <section class="c4">
+                <h2>FILTER</h2>
+                <div class="group">
+                    <h2>TYPE</h2>
+                    <div class="controls">
+                        <input type="radio" id="optid1" data-cc="12" value="0" name="opt1" checked/>
+                        <label for="optid1">OFF</label>
+                        <input type="radio" id="optid2" data-cc="12" value="1" name="opt1" />
+                        <label for="optid2">HP</label>
+                        <input type="radio" id="optid3" data-cc="12" value="2" name="opt1" />
+                        <label for="optid3">BP</label>
+                        <input type="radio" id="optid4" data-cc="12" value="3" name="opt1" />
+                        <label for="optid4">LP</label>
+                    </div>
+                </div>
+                <div class="group">
+                    <h2>FILTER</h2>
+                    <div class="rotary big" data-cc="74" data-label="FREQ" data-init="64"></div>
+                    <br/>
+                    <div class="rotary" data-cc="71" data-label="RES" data-init="0"></div>
+                </div>
+                <div class="group">
+                    <h2>ENVELOPE</h2>
+                    <div class="fader" data-cc="106" data-label="A" data-init="74"></div>
+                    <div class="fader" data-cc="107" data-label="D" data-init="127"></div>
+                    <div class="fader" data-cc="110" data-label="S" data-init="127"></div>
+                    <div class="fader" data-cc="109" data-label="R" data-init="99"></div>
+                    <div class="fader bipolar gapleft" data-cc="108" data-label="DEPTH" data-init="0"></div>
+                </div>
+            </section>
+
+            <section class="c5">
+                <h2>OUTPUT</h2>
+                <div class="group">
+                    <h2>ENVELOPE</h2>
+                    <div class="fader" data-cc="73" data-label="A" data-init="74"></div>
+                    <div class="fader" data-cc="75" data-label="D" data-init="127"></div>
+                    <div class="fader" data-cc="76" data-label="S" data-init="127"></div>
+                    <div class="fader" data-cc="72" data-label="R" data-init="99"></div>
+                </div>
+                <div class="group">
+                    <h2>OUTPUT</h2>
+                    <div class="fader" data-cc="13" data-label="DIST" data-init="64"></div>
+                    <div class="fader" data-cc="7" data-label="VOLUME" data-init="64"></div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- This file shows the basic building blocks for a MIDI CC browser based MIDI controller -->
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>SINE-NATRA</title>
+    <link rel="stylesheet" href="res/controller.css" type="text/css" />
+    <script src="res/jquery.js"></script>
+    <script src="res/controller.js" data-settings-prefix="sinat_"></script>
+    <style>
+        /* Here you can change the user interface's main color */
+        section {
+            border-bottom-color: #945200;
+            min-height: 248px;
+        }
+        section h2 {
+            background-color: #945200;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>SINE-NATRA</h1><!-- Change this headline to the name of your controlled device -->
+    </header>
+
+    <main>
+        <section>
+            <h2>HARMONICS</h2>
+            <div class="group">
+                <h2>LEVELS</h2>
+                <div class="fader" data-cc="12" data-label="SUB" data-init="64"></div>
+                <div class="fader" data-cc="13" data-label="FUND" data-init="96"></div>
+                <div class="fader" data-cc="14" data-label="2ND" data-init="64"></div>
+                <div class="fader" data-cc="15" data-label="3RD" data-init="32"></div>
+                <div class="fader" data-cc="16" data-label="4TH" data-init="0"></div>
+                <div class="fader" data-cc="17" data-label="5TH" data-init="0"></div>
+                <div class="fader" data-cc="18" data-label="6TH" data-init="0"></div>
+                <div class="fader" data-cc="19" data-label="7TH" data-init="0"></div>
+            </div>
+            <div class="group gapleft">
+                <h2>DRIVE</h2>
+                <div class="fader" data-cc="20" data-label="AMOUNT" data-init="0"></div>
+                <div class="fader bipolar" data-cc="21" data-label="VEL" data-init="64"></div>
+            </div>
+            
+        </section>
+
+        <!-- here anothe section starts, which demonstrates groups within a section -->
+        <section>
+            <h2>MOD ENVELOPE</h2>
+            <div class="group">
+                <h2>ENV</h2>
+                <div class="fader" data-cc="22" data-label="A" data-init="16"></div>
+                <div class="fader" data-cc="23" data-label="D" data-init="32"></div>
+                <div class="fader" data-cc="24" data-label="S" data-init="64"></div>
+                <div class="fader" data-cc="25" data-label="R" data-init="32"></div>
+            </div>
+            <div class="group">
+                <h2>HARMO</h2>
+                <div class="rotary bipolar" data-cc="26" data-label="DEPTH" data-init="64"></div>
+                <div class="rotary" data-cc="27" data-label="WIDTH" data-init="0"></div>
+                <br />
+                <div class="rotary" data-cc="28" data-label="SMOOTHEN" data-init="0"></div>
+            </div>
+            <div class="group">
+                <h2>DRIVE</h2>
+                <div class="rotary bipolar" data-cc="29" data-label="DEPTH" data-init="64"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>MOD LFO</h2>
+            <div class="group">
+                <h2>LFO</h2>
+                <div class="fader" data-cc="30" data-label="FREQ" data-init="16"></div>
+                <div class="fader bipolar" data-cc="31" data-label="SHAPE" data-init="64"></div>
+                <br />
+                <div class="controls">
+                    <input type="checkbox" id="btn1" data-cc="36" />
+                    <label for="btn1">KEY RESET</label>
+                </div>
+            </div>
+            <div class="group">
+                <h2>HARMO</h2>
+                <div class="rotary bipolar" data-cc="32" data-label="DEPTH" data-init="64"></div>
+                <div class="rotary" data-cc="33" data-label="WIDTH" data-init="0"></div>
+                <br />
+                <div class="rotary" data-cc="34" data-label="SMOOTHEN" data-init="0"></div>
+            </div>
+            <div class="group">
+                <h2>DRIVE</h2>
+                <div class="rotary bipolar" data-cc="35" data-label="DEPTH" data-init="64"></div>
+            </div>
+        </section>
+
+        
+        <section>
+            <h2>OUTPUT</h2>
+            <div class="group">
+                <h2>ENVELOPE</h2>
+                <div class="fader" data-cc="73" data-label="A" data-init="74"></div>
+                <div class="fader" data-cc="75" data-label="D" data-init="127"></div>
+                <div class="fader" data-cc="76" data-label="S" data-init="127"></div>
+                <div class="fader" data-cc="72" data-label="R" data-init="99"></div>
+            </div>
+            <div class="group gapleft">
+                <h2>OUT</h2>
+                <div class="fader" data-cc="40" data-label="VEL" data-init="0"></div>
+                <div class="fader" data-cc="7" data-label="VOLUME" data-init="65"></div>
+                <br/>
+                <div class="controls">
+                    <input type="checkbox" id="btn2" data-cc="39" />
+                    <label for="btn2">BASS BOOST</label>
+                </div>
+            </div>
+            <div class="group gapleft">
+                <h2>PANNING</h2>
+                <div class="rotary" data-cc="37" data-label="SPEED" data-init="16"></div>
+                <br />
+                <div class="rotary" data-cc="38" data-label="WIDTH" data-init="0"></div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

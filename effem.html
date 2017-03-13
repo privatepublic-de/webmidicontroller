@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>EFFEM</title>
+    <link rel="stylesheet" href="res/controller.css" type="text/css" />
+    <script src="res/jquery.js"></script>
+    <script src="res/controller.js" data-settings-prefix="effem_"></script>
+    <style>
+        section {
+            border-bottom-color: #997750;
+        }
+        section h2 {
+            background-color: #997750;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>EFFEM</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>OSCILLATORS</h2>
+            <div class="group">
+                <h2>OSC1</h2>
+                <div class="rotary big bipolar" data-cc="70" data-label="PITCH" data-init="64"></div>
+                <br/>
+                <div class="rotary bipolar" data-cc="77" data-label="FINE" data-init="64"></div>    
+            </div>
+            <div class="group">
+                <h2>OSC2</h2>
+                <div class="rotary big bipolar" data-cc="93" data-label="PITCH" data-init="64"></div>
+                <br/>
+                <div class="rotary bipolar" data-cc="113" data-label="FINE" data-init="64"></div>    
+            </div>
+            <div class="group">
+                <h2>OSC3</h2>
+                <div class="rotary big bipolar" data-cc="89" data-label="PITCH" data-init="64"></div>
+                <br/>
+                <div class="rotary bipolar" data-cc="94" data-label="FINE" data-init="64"></div>    
+            </div>
+            <div class="group">
+                <h2>OSC4</h2>
+                <div class="rotary big bipolar" data-cc="108" data-label="PITCH" data-init="64"></div>
+                <br/>
+                <div class="rotary bipolar" data-cc="71" data-label="FINE" data-init="64"></div>    
+            </div>
+            <div class="group">
+                <div class="rotary bipolar" data-cc="25" data-label="OSC2/4" data-init="64" style="margin-top:5em"></div>
+                <br/>DETUNE
+            </div>
+            <div class="group">
+                <h2>ALGORITHM</h2>
+                <div class="controls" style="margin-top:3em">
+                    <input type="radio" id="optid1" data-cc="14" value="0" name="opt1"/>
+                    <label for="optid1">1 &lt; 2</label>
+                    <input type="radio" id="optid2" data-cc="14" value="1" name="opt1"/>
+                    <label for="optid2">2 &lt; (3+4)</label>
+                    <input type="radio" id="optid3" data-cc="14" value="2" name="opt1"/>
+                    <label for="optid3">1 &lt; 2 , 3 &gt; 4</label>
+                    <input type="radio" id="optid4" data-cc="14" value="3" name="opt1" checked/>
+                    <label for="optid4">NO FM</label>
+                </div>
+            </div>
+
+            <div class="group">
+                <h2>LEVELS</h2>
+                <div class="fader" data-cc="13" data-label="OSC1" data-init="127"></div>
+                <div class="fader" data-cc="15" data-label="OSC2" data-init="0"></div>
+                <div class="fader" data-cc="16" data-label="OSC3" data-init="0"></div>
+                <div class="fader" data-cc="17" data-label="OSC4" data-init="0"></div>
+            </div>
+            
+        </section>
+        
+        <section>
+            <h2>FEEDBACK</h2>
+            <div class="group">
+                <h2>ENVELOPE</h2>
+                <div class="fader" data-cc="106" data-label="A" data-init="74"></div>
+                <div class="fader" data-cc="107" data-label="D" data-init="127"></div>
+                <div class="fader" data-cc="110" data-label="S" data-init="127"></div>
+                <div class="fader" data-cc="109" data-label="R" data-init="99"></div>
+            </div>
+            <div class="group">
+                <h2>AMOUNT</h2>
+                <div class="group">
+                    <div class="rotary bipolar" data-cc="18" data-label="OSC1" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="19" data-label="OSC2" data-init="64"></div>
+                </div>
+                <br />
+                <div class="group">
+                    <div class="rotary bipolar" data-cc="20" data-label="OSC3" data-init="64"></div>
+                    <div class="rotary bipolar" data-cc="21" data-label="OSC4" data-init="64"></div>
+                </div>
+            </div>
+            <div class="group">
+                <h2>VELOCITY</h2>
+                <div class="rotary " data-cc="22" data-label="OSC2" data-init="0"></div>
+                <br/>
+                <div class="rotary " data-cc="23" data-label="OSC4" data-init="0"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>OUT</h2>
+            <div class="group">
+                <h2>ENVELOPE</h2>
+                <div class="fader" data-cc="73" data-label="A" data-init="74"></div>
+                <div class="fader" data-cc="75" data-label="D" data-init="127"></div>
+                <div class="fader" data-cc="76" data-label="S" data-init="127"></div>
+                <div class="fader" data-cc="72" data-label="R" data-init="99"></div>
+            </div>
+            <div class="group">
+                <h2>OUTPUT</h2>
+                <div class="rotary" data-cc="24" data-label="VELOCITY" data-init="127"></div>
+                <div class="fader gapleft" data-cc="7" data-label="VOLUME" data-init="65"></div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
