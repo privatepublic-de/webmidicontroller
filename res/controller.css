@@ -88,7 +88,7 @@ th {
     font-size: .9em;
 }
 
-.fader .scale {
+.fader .scale, .fader-horz .scale {
     position: absolute;
     left: 25%;
     right: 25%;
@@ -131,6 +131,65 @@ th {
     margin-right: -100%;
 }
 
+.fader-horz {
+    margin: 4px 8px 4px 8px;
+    display: block;
+    height: 32px;
+}
+
+.fader-horz .ctrl {
+    display: inline-block;
+    position: relative;
+    height: 32px;
+    width: 140px;
+    vertical-align: middle;
+}
+
+.fader-horz .scale {
+    position: absolute;
+    top: 25%;
+    bottom: 25%;
+    left: 0;
+    right: 0;
+    background-color: #666;
+    background-size: 100% 100%;
+	border-radius: 4px;
+}
+
+.fader-horz .handle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 12px;
+    height: 32px;
+    top: 0;
+    border-radius: 4px;
+    background-color: #1981dc;
+    cursor: pointer;
+    box-shadow: 1px 1px 6px #000;
+    border: 1px solid #000;
+    color: #ccc;
+    font-size: .9em;
+}
+
+.fader-horz label {
+    min-width: 60px;
+    text-align: left;
+    vertical-align: middle;
+    display: inline-block;
+    color: #eee;
+    font-weight: normal;
+    font-size: 12px;
+    margin: 0 4px 0 0;
+}
+
+.fader-horz .value {
+    position: absolute;
+    right: 2px;
+    top: 10px;
+}
+
+
 main {
     margin: 30px 0 20% 0;
     text-align: center;
@@ -143,6 +202,10 @@ main p {
 
 .gapleft {
     margin-left: 32px;
+}
+
+.gaptop {
+    margin-top: 20px;
 }
 
 #settings {

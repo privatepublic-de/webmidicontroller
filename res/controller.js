@@ -540,16 +540,24 @@ $(function () {
 
     });
 
-    $(".fader").each(function () {
+    $(".fader, .fader-horz").each(function () {
+        // disclaimer: the horizontal fader implementation is ugly. needs clean-up and generalisation. don't be to critical, please
         let el = $(this);
+        let isHorizontal = el.hasClass("fader-horz");
         let isBipolar = el.hasClass("bipolar");
         let initval = el.data("init") || 0;
         let ccvalue = initval;
-        el.append("<label>" + el.data("label") + "</label><div class='ctrl'><div class=\"scale\"></div><span class='center'></span><div class=\"handle\"></div></div>");
+        if (isHorizontal) {
+            el.append("<label>" + el.data("label") + "</label><div class='ctrl'><div class=\"scale\"></div><span class='center'></span><div class=\"handle\"></div><div class=\"value\"></div></div>");
+        }
+        else {
+            el.append("<label>" + el.data("label") + "</label><div class='ctrl'><div class=\"scale\"></div><span class='center'></span><div class=\"handle value\"></div></div>");
+        }
         let handle = el.find(".handle");
-        let handleMiddle = handle.height() / 2;
+        let handleMiddle = (isHorizontal?handle.width():handle.height()) / 2;
         let ctrl = el.find(".ctrl");
-        let height = ctrl.height() - handle.height();
+        let valueDisplay = el.find('.value');
+        let scale = isHorizontal?ctrl.width() - handle.width():ctrl.height() - handle.height();
         let recentValue = initval;
         let cc = el.data("cc");
         usedccs[cc] = (usedccs[cc] ? usedccs[cc] : "") + el.data("label") + " ";
@@ -557,14 +565,14 @@ $(function () {
         el.find("label").click(function (ev) {
             ev.preventDefault();
             update(64);
-            handle.css({ "top": (127 - ccvalue) / 127 * height });
+            handle.css(isHorizontal?{ "left": ccvalue / 127 * scale }:{ "top": (127 - ccvalue) / 127 * scale });
         });
-        handle.css({ "top": (127 - initval) / 127 * height });
+        handle.css(isHorizontal?{ "left": ccvalue / 127 * scale }:{ "top": (127 - ccvalue) / 127 * scale });
 
         el.on("midi:update", function (ev, value) {
             recentValue = -1; // force update!
             ccvalue = value;
-            handle.css({ "top": (127 - ccvalue) / 127 * height });
+            handle.css(isHorizontal?{ "left": (127 - ccvalue) / 127 * scale }:{ "top": (127 - ccvalue) / 127 * scale });
             update(ccvalue);
         });
         el.on("patch:send", function (ev) {
@@ -576,10 +584,10 @@ $(function () {
             ccvalue = ccv;
             if (isBipolar) {
                 let dispv = ccvalue - 64;
-                handle.text(dispv > 0 ? '+' + dispv : dispv);
+                valueDisplay.text(dispv > 0 ? '+' + dispv : dispv);
             }
             else {
-                handle.text(ccvalue);
+                valueDisplay.text(ccvalue);
             }
             if (recentValue != ccv) {
                 recentValue = ccv;
@@ -588,36 +596,36 @@ $(function () {
         }
         update(initval);
 
-        let updateY = function (y) {
-            if (y > height) {
-                y = height;
+        let updatePos = function (pos) {
+            if (pos > scale) {
+                pos = scale;
             }
-            if (y < 0) {
-                y = 0;
+            if (pos < 0) {
+                pos = 0;
             }
-            handle.css({ "top": y });
-            update(parseInt(127 - (y / height) * 127.0));
+            handle.css(isHorizontal?{ "left": pos }:{ "top": pos });
+            update(isHorizontal?parseInt((pos / scale) * 127.0):parseInt(127 - (pos / scale) * 127.0));
         }
         let isDragging = false;
         el.mousedown(function (ev) {
             ev.preventDefault();
             if (ev.target != handle[0]) {
-                let yps = ev.pageY - handle.offset().top;
+                let ps = isHorizontal?(ev.pageX - handle.offset().left):(ev.pageY - handle.offset().top);
                 let val = ccvalue;
-                if (yps < 0) {
-                    val += 12;
+                if (ps < 0) {
+                    val += isHorizontal?-12:12;
                 }
                 else {
-                    val -= 12;
+                    val -= isHorizontal?-12:12;
                 }
                 val = Math.max(0, Math.min(val, 127));
-                updateY((127 - val) / 127.0 * height); // todo generalize
+                updatePos((isHorizontal?val:(127 - val)) / 127.0 * scale); // todo generalize
             }
             else {
-                let clickedY = ev.pageY - ctrl.offset().top - handleMiddle;
+                let clickedPos = isHorizontal?(ev.pageX - ctrl.offset().left - handleMiddle):(ev.pageY - ctrl.offset().top - handleMiddle);
                 isDragging = true;
                 handle.addClass("dragging");
-                updateY(clickedY);
+                updatePos(clickedPos);
             }
         })
             .on("mousewheel", function (ev) {
@@ -626,21 +634,19 @@ $(function () {
                     let dir = ev.originalEvent.wheelDelta > 0 ? 1 : -1;
                     let val = ccvalue + ev.originalEvent.wheelDelta / 8.0;
                     val = Math.max(0, Math.min(val, 127));
-                    updateY((127 - val) / 127.0 * height);
+                    updatePos((isHorizontal?val:(127 - val)) / 127.0 * scale);
                 }
             });
         $(window).mousemove(function (ev) {
             if (isDragging) {
                 ev.preventDefault();
-                let currentY = ev.pageY - ctrl.offset().top - handleMiddle;
-                updateY(currentY);
+                updatePos(isHorizontal?(ev.pageX - ctrl.offset().left - handleMiddle):(ev.pageY - ctrl.offset().top - handleMiddle));
             }
         })
             .mouseup(function (ev) {
                 if (isDragging) {
                     ev.preventDefault();
-                    let currentY = ev.pageY - ctrl.offset().top - handleMiddle;
-                    updateY(currentY);
+                    updatePos(isHorizontal?(ev.pageX - ctrl.offset().left - handleMiddle):(ev.pageY - ctrl.offset().top - handleMiddle));
                     isDragging = false;
                     handle.removeClass("dragging");
                 }
